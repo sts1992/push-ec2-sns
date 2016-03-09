@@ -2,10 +2,10 @@
 import json
 import boto3
 
-def lambda_handler(event, context):
+client = boto3.client('ec2')
+sns = boto3.client('sns')
 
-    client = boto3.client('ec2')
-    sns = boto3.client('sns')
+def lambda_handler(event, context):
 
     print('Loading function')
     response = client.describe_instances( Filters=[
